@@ -10,22 +10,22 @@ const HeroContent = () => {
     <motion.div
       initial="hidden"
       animate="visible"
-      className="flex items-center justify-center h-full w-full"
+      className="flex items-center justify-center mt-32"
     >
-      <div className="h-full w-full flex flex-col gap-4 justify-center m-auto text-center items-center">
+      <div className="h-full w-full flex flex-col gap-3 justify-center m-auto text-center items-center">
         <motion.div
           variants={slideInFromTop}
           className="Welcome-box px-[10px] py-1 border border-[#7042f88b] opacity-[0.9]"
         >
           <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
-          <h1 className="Welcome-text text-[17px]">
+          <h1 className="Welcome-text text-[25px]">
             Fullstack Developer Portfolio
           </h1>
         </motion.div>
 
         <motion.div
           variants={slideInFromLeft(0.5)}
-          className="flex flex-col gap-6 text-[80px] font-bold text-white max-w-[1000px] w-auto h-auto"
+          className="flex flex-col gap-6 text-[70px] font-bold text-white max-w-[1000px] w-auto h-auto"
         >
           <span>
             Hi,I'm
@@ -37,18 +37,6 @@ const HeroContent = () => {
         </motion.div>
 
         <motion.div variants={slideInFromLeft(0.6)} className={` w-full`}>
-          {/* <Badge
-            variant="outline"
-            className="bg-inherit text-white  border-green-200 flex gap-1.5 items-center px-5 py-3.5 text-lg" 
-          >
-            <span className="relative flex h-3 w-3 mr-2 ">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-full w-full bg-green-500"></span>
-            </span>
-            <span>Available for work</span>
-          </Badge> */}
-
-          {/* <MetalBadge /> */}
           <div className=" flex justify-center text-center">
             <HoverBorderGradient
               containerClassName="rounded-full"

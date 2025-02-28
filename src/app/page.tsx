@@ -1,3 +1,4 @@
+import { TracingBeamDemo } from "@/components/main/Demo";
 import Hero from "@/components/main/Hero";
 import WorkExperience from "@/components/main/WorkExperience";
 
@@ -8,14 +9,9 @@ export default function Home() {
       <main className="flex flex-col justify-center min-h-screen py-2">
         <Hero />
         <div className="section-separator"></div>
-        <WorkExperience
-          company="FPT Software"
-          description={["Developed scalable software solutions"]}
-          endDate="2021"
-          startDate="2019"
-          title="Software Engineer"
-          key={1}
-        />
+        <WorkExperience />
+        <div className="section-separator"></div>
+W
       </main>
       <footer></footer>
     </div>
