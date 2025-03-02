@@ -16,6 +16,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        techText: "#54D2D4",
       },
     },
   },
