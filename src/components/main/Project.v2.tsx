@@ -39,7 +39,7 @@ function TimelineDemo() {
     },
   ];
 
-  const data = projectsData.map((project, index) => ({
+  const data = projectsData.map((project) => ({
     year: project.year,
     title: `${project.year}`,
     content: project.projects.map((project) => (
