@@ -5,7 +5,7 @@ import AnimatedBackground from "../ui/AnimatedBackground";
 
 const Hero = () => {
   return (
-    <div className="relative h-[700px] overflow-hidden">
+    <div className="relative h-[700px] md:h-[700px] lg:h-[800px] overflow-hidden">
       <AnimatedBackground />
       <div className="relative flex flex-col h-full w-full" id="about-me">
         <HeroContent />
