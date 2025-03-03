@@ -306,6 +306,7 @@ export default function AboutMe() {
                 width: "100%",
                 height: "100%",
                 borderRadius: "12px",
+                
               }}
               src="https://open.spotify.com/embed/playlist/0aXwhu7Ot8PtYfjNU0f3Ei?utm_source=generator"
               allowFullScreen
