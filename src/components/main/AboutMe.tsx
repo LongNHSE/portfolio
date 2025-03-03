@@ -18,15 +18,8 @@ type TDuolingo = {
 
 export default function AboutMe() {
   async function fetchDuolingoUserData(): Promise<TDuolingo | null> {
-    const url =
-      "https://www.duolingo.com/2017-06-30/users?username=HuyLong74244&fields=streak,streakData%7BcurrentStreak,previousStreak%7D%7D";
-
     try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        console.error("Failed to fetch data:", response.statusText);
-        return null;
-      }
+      const response = await fetch("/api/duolingo?username=HuyLong74244");
 
       const data = await response.json();
       const user = data.users[0];
@@ -134,7 +127,7 @@ export default function AboutMe() {
     <section className="w-full py-10 md:py-10 lg:py-10 bg-background flex flex-col items-center text-gray-300">
       <AnimatedGradient className="inline-block mb-10">
         <h2 className="text-3xl md:text-4xl font-bold text-white px-4 py-2">
-            About Me
+          About Me
         </h2>
       </AnimatedGradient>
       <BentoGrid className="max-w-[1380px] mx-auto mb-10">
@@ -306,7 +299,6 @@ export default function AboutMe() {
                 width: "100%",
                 height: "100%",
                 borderRadius: "12px",
-                
               }}
               src="https://open.spotify.com/embed/playlist/0aXwhu7Ot8PtYfjNU0f3Ei?utm_source=generator"
               allowFullScreen
