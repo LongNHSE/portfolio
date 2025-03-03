@@ -1,3 +1,6 @@
+import AboutMe from "@/components/main/AboutMe";
+import Contact from "@/components/main/ContactMe";
+import Footer from "@/components/main/Footer";
 import Hero from "@/components/main/Hero";
 import Project from "@/components/main/Project";
 import WorkExperience from "@/components/main/WorkExperience";
@@ -12,6 +15,11 @@ export default function Home() {
         <WorkExperience />
         <div className="section-separator"></div>
         <Project />
+        <div className="section-separator"></div>
+        <AboutMe />
+        <div className="section-separator" id="contact"></div>
+        <Contact />
+        <Footer />
       </main>
       <footer></footer>
     </div>

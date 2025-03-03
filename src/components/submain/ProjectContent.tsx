@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import { Share2 } from "lucide-react";
+import { Share2, Wrench } from "lucide-react";
 import {
   Carousel,
   CarouselApi,
@@ -13,6 +13,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { useState, useEffect, useCallback } from "react";
 import { cn } from "@/libs/utils";
+import { Ribbon } from "../ui/Ribbon";
 
 export type TProjectContent = {
   positions: string[];
@@ -66,15 +67,28 @@ const Projects = ({ project }: { project: TProjectContent }) => {
           transition={{ duration: 0.5 }}
           ref={ref}
         ></motion.div>
-        <div className="space-y-20">
+        <div className="space-y-10">
           <motion.div
             key={project.title}
-            className="flex flex-col min-h-[470px] justify-start lg:flex-row gap-8  dark:bg-gray-700 rounded-2xl p-6 max-w-7xl"
+            className="flex relative  overflow-hidden flex-col min-h-[470px] justify-start lg:flex-row gap-8 bg-gray-700  dark:bg-gray-700 rounded-2xl p-6 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: project.index * 0.1 }}
             whileHover={{ scale: 1.02 }}
           >
+            {/* <div className="relative h-64 overflow-hidden rounded-lg  p-6"> */}
+
+            {project.isInprogress && (
+              <Ribbon
+                variant={"default"}
+                position={"top-right"}
+                className="z-10"
+              >
+                <Wrench color="black" className="mr-1" size={18} />
+                <div className="span text-black">In Progress </div>
+              </Ribbon>
+            )}
+            {/* </div> */}
             <div
               className={`lg:w-1/2 ${
                 project.index % 2 === 1 ? "lg:order-1" : ""
@@ -189,7 +203,7 @@ const Projects = ({ project }: { project: TProjectContent }) => {
                           alt={project.title}
                           layout="fill"
                           objectFit="contain"
-                          className="rounded-lg "
+                          className="rounded-lg z-50"
                         />
                       </div>
                     </CarouselItem>

@@ -10,7 +10,7 @@ const HeroContent = () => {
     <motion.div
       initial="hidden"
       animate="visible"
-      className="flex items-center justify-center mt-32"
+      className="flex items-center justify-center md:mt-32  "
     >
       <div className="h-full w-full flex flex-col gap-3 justify-center m-auto text-center items-center">
         <motion.div
@@ -60,6 +60,7 @@ const HeroContent = () => {
         </motion.p>
         <div className="flex gap-x-6">
           <motion.a
+            href="#contact"
             variants={slideInFromLeft(1)}
             className="p-3 button-primary-2 text-center text-white cursor-pointer rounded-lg max-w-[200px] min-w-[120px]"
           >

@@ -30,7 +30,7 @@ const Experience = () => {
   });
 
   return (
-    <section id="experience" className="py-20 ">
+    <section id="experience" className="py-10 ">
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-12 "
@@ -49,7 +49,7 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.title}
-              className="mb-8 bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg"
+              className="mb-8 bg-gray-700 dark:bg-gray-700 rounded-lg p-6 shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}

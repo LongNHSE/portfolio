@@ -18,7 +18,7 @@ export const AnimatedGradient = ({
       transition={{ duration: 0.3 }}
     >
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-400 to-blue-600 opacity-100"
+        className="absolute inset-0 bg-gradient-to-b from-[#2D84B4EB] to-[#6C58B3EB] bg-[#5B48B8EB] opacity-100"
         animate={{
           backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
         }}
