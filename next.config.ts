@@ -3,11 +3,11 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/*", 
+        source: "/:path*", // ✅ Fix: Proper wildcard syntax for all routes
         headers: [
           {
             key: "Access-Control-Allow-Origin",
-            value: "*", // Change to your domain for security
+            value: "*", // 🔒 Change to your domain for security (e.g., "https://yourdomain.com")
           },
           {
             key: "Access-Control-Allow-Methods",
@@ -17,6 +17,10 @@ const nextConfig = {
             key: "Access-Control-Allow-Headers",
             value: "X-Requested-With, Content-Type, Authorization",
           },
+          {
+            key: "Access-Control-Allow-Credentials",
+            value: "true", // ✅ Fix: Allows credentials like cookies if needed
+          },
         ],
       },
     ];
@@ -24,4 +28,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
