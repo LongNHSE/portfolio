@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { AnimatedGradient } from "../ui/AnimatedGradient";
+import { sendEmail } from "@/libs/contact/actions";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -15,7 +16,7 @@ const formSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
-type FormData = z.infer<typeof formSchema>;
+export type TFormData = z.infer<typeof formSchema>;
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,16 +27,16 @@ export default function Contact() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<TFormData>({
     resolver: zodResolver(formSchema),
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: TFormData) => {
     setIsSubmitting(true);
     try {
       // Here you would typically send the form data to your backend
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+      await sendEmail(data);
       setSubmitSuccess(true);
       reset();
       setTimeout(() => setSubmitSuccess(false), 3000);
@@ -67,14 +68,14 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-gray-800 p-8 rounded-xl shadow-lg">
+            <div className="bg-gray-700 p-8 rounded-xl shadow-lg">
               <h3 className="text-2xl font-semibold mb-6 text-white">
                 Contact Information
               </h3>
               <div className="space-y-6">
                 <a
                   href="huylong2113@gmail.com"
-                  className="flex items-center  text-gray-300 hover:text-blue-600 hover:text-blue-400 transition-colors duration-300"
+                  className="flex items-center  text-gray-300  hover:text-blue-400 transition-colors duration-300"
                 >
                   <Mail className="w-6 h-6 mr-3 text-blue-600" />
                   huylong2113@gmail.com
@@ -102,7 +103,7 @@ export default function Contact() {
           >
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="bg-gray-800 p-8 rounded-xl shadow-lg"
+              className="bg-gray-700 p-8 rounded-xl shadow-lg"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -116,9 +117,7 @@ export default function Contact() {
                     {...register("name")}
                     type="text"
                     className={`w-full px-4 py-2 rounded-md border ${
-                      errors.name
-                        ? "border-red-500"
-                        : " border-gray-600"
+                      errors.name ? "border-red-500" : " border-gray-300"
                     } focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white`}
                   />
                   {errors.name && (
@@ -138,9 +137,7 @@ export default function Contact() {
                     {...register("email")}
                     type="email"
                     className={`w-full px-4 py-2 rounded-md border ${
-                      errors.email
-                        ? "border-red-500"
-                        : "border-gray-600"
+                      errors.email ? "border-red-500" : "border-gray-300"
                     } focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white`}
                   />
                   {errors.email && (
@@ -161,9 +158,7 @@ export default function Contact() {
                   {...register("subject")}
                   type="text"
                   className={`w-full px-4 py-2 rounded-md border ${
-                    errors.subject
-                      ? "border-red-500"
-                      : "border-gray-600"
+                    errors.subject ? "border-red-500" : "border-gray-300"
                   } focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white`}
                 />
                 {errors.subject && (
@@ -183,9 +178,7 @@ export default function Contact() {
                   {...register("message")}
                   rows={4}
                   className={`w-full px-4 py-2 rounded-md border ${
-                    errors.message
-                      ? "border-red-500"
-                      : "border-gray-600"
+                    errors.message ? "border-red-500" : "border-gray-300"
                   } focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white`}
                 ></textarea>
                 {errors.message && (
@@ -219,6 +212,6 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
-  </section>
+    </section>
   );
 }
