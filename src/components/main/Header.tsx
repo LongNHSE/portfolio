@@ -2,15 +2,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
-import { DownloadIcon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { DownloadIcon, Menu, X } from "lucide-react";
 
 export default function Header() {
   const [mounted, setMounted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => setMounted(true), []);
+
   const handleDownload = () => {
     // Replace with your actual PDF file URL or local path
     const pdfUrl = "/intern-resume.pdf";
@@ -22,6 +22,18 @@ export default function Header() {
     link.click();
     document.body.removeChild(link);
   };
+
+  const navLinks = [
+    { href: "#work-experience", label: "Work Experience" },
+    { href: "#projects", label: "Projects" },
+    { href: "#about", label: "About" },
+    { href: "#contact", label: "Contact" },
+  ];
+
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <motion.header
       className="sticky top-0 z-30 bg-background/50 backdrop-blur-sm text-white"
@@ -43,37 +55,41 @@ export default function Header() {
             />
           </Link> */}
         </div>
-        <div className="flex gap-x-12">
-          <a
-            href="#work-experience"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            Work Experience
-          </a>
-          <a
-            href="#projects"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            Projects
-          </a>
-          <a
-            href="#about"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            About
-          </a>
-          <a
-            href="#contact"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
-          >
-            Contact
-          </a>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex gap-x-12">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              rel="noopener noreferrer"
+              className="text-sm font-semibold leading-6 text-foreground hover:text-primary transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
-        <div className="flex flex-1 justify-end">
+
+        {/* Mobile Menu Button */}
+        <div className="flex md:hidden">
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-md p-2 text-foreground hover:bg-background/80 hover:text-primary"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label="Toggle menu"
+          >
+            <span className="sr-only">Open main menu</span>
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" aria-hidden="true" />
+            ) : (
+              <Menu className="h-6 w-6" aria-hidden="true" />
+            )}
+          </button>
+        </div>
+
+        <div className="hidden md:flex flex-1 justify-end">
           <button
             onClick={handleDownload}
             className="flex items-center gap-2 rounded-lg px-4 py-2 bg-primary text-white hover:bg-primary/80 transition-all"
@@ -83,6 +99,45 @@ export default function Header() {
           </button>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            id="mobile-menu"
+            className="md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="space-y-1 px-4 pb-3 pt-2 bg-background/90 backdrop-blur-md border-t border-border/10">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-background/80 hover:text-primary"
+                  onClick={closeMenu}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <div className="mt-4 pt-4 border-t border-border/10">
+                <button
+                  onClick={() => {
+                    handleDownload();
+                    closeMenu();
+                  }}
+                  className="flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 bg-primary text-white hover:bg-primary/80 transition-all"
+                >
+                  <DownloadIcon className="h-5 w-5" />
+                  <span>Download Resume</span>
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }

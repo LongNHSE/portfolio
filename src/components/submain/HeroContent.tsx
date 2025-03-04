@@ -2,10 +2,25 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { slideInFromLeft, slideInFromTop } from "@/libs/motion";
+import {
+  slideInFromLeft,
+  slideInFromRight,
+  slideInFromTop,
+} from "@/libs/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { HoverBorderGradient } from "../ui/HoverGradientBadge";
 const HeroContent = () => {
+  const handleDownload = () => {
+    // Replace with your actual PDF file URL or local path
+    const pdfUrl = "/intern-resume.pdf";
+
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = "intern-resume.pdf"; // Updated the download file name for clarity
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <motion.div
       initial="hidden"
@@ -41,7 +56,7 @@ const HeroContent = () => {
             <HoverBorderGradient
               containerClassName="rounded-full"
               as="div"
-              className="dark:bg-inherit bg-inherit text-black dark:text-white flex items-center space-x-2"
+              className="bg-inherit text-white flex items-center space-x-2"
             >
               <span className="relative flex h-3 w-3 mr-2 ">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -59,13 +74,24 @@ const HeroContent = () => {
           Software development. Check out my projects and skills.
         </motion.p>
         <div className="flex gap-x-6">
-          <motion.a
-            href="#contact"
+          <motion.button
             variants={slideInFromLeft(1)}
-            className="p-3 button-primary-2 text-center text-white cursor-pointer rounded-lg max-w-[200px] min-w-[120px]"
+            whileHover={{ y: -5 }} // Hiệu ứng hover đúng cách với motion
+            transition={{ duration: 0.3 }}
+            className="button-primary-2 text-center text-white cursor-pointer rounded-lg max-w-[200px] min-w-[120px]"
           >
-            Contact
-          </motion.a>
+            <a href="#contact">Contact</a>
+          </motion.button>
+
+          <motion.button
+            onClick={handleDownload}
+            variants={slideInFromRight(1)}
+            whileHover={{ y: -5 }} // Hiệu ứng hover
+            transition={{ duration: 0.3 }}
+            className="shadow-[0_0_0_3px_#000000_inset] px-6 py-2 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold"
+          >
+            <span>My Resume</span>
+          </motion.button>
         </div>
       </div>
     </motion.div>

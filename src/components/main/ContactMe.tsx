@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send, Loader2 } from "lucide-react";
-import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -68,26 +67,26 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
-              <h3 className="text-2xl font-semibold mb-6 dark:text-white">
+            <div className="bg-gray-800 p-8 rounded-xl shadow-lg">
+              <h3 className="text-2xl font-semibold mb-6 text-white">
                 Contact Information
               </h3>
               <div className="space-y-6">
                 <a
                   href="huylong2113@gmail.com"
-                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                  className="flex items-center  text-gray-300 hover:text-blue-600 hover:text-blue-400 transition-colors duration-300"
                 >
                   <Mail className="w-6 h-6 mr-3 text-blue-600" />
                   huylong2113@gmail.com
                 </a>
                 <a
                   href="tel:(+84)3775578399"
-                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                  className="flex items-center text-gray-300 hover:text-blue-600  transition-colors duration-300"
                 >
                   <Phone className="w-6 h-6 mr-3 text-blue-600" />
                   (+84) 377 557 8399
                 </a>
-                <div className="flex items-center text-gray-600 dark:text-gray-300">
+                <div className="flex items-center text-gray-300">
                   <MapPin className="w-6 h-6 mr-3 text-blue-600" />
                   Ho Chi Minh City, Vietnam
                 </div>
@@ -103,13 +102,13 @@ export default function Contact() {
           >
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg"
+              className="bg-gray-800 p-8 rounded-xl shadow-lg"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-gray-300 mb-1"
                   >
                     Name
                   </label>
@@ -119,8 +118,8 @@ export default function Contact() {
                     className={`w-full px-4 py-2 rounded-md border ${
                       errors.name
                         ? "border-red-500"
-                        : "border-gray-300 dark:border-gray-600"
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                        : " border-gray-600"
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white`}
                   />
                   {errors.name && (
                     <p className="mt-1 text-sm text-red-500">
@@ -131,7 +130,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-sm font-medium text-gray-300 mb-1"
                   >
                     Email
                   </label>
@@ -141,8 +140,8 @@ export default function Contact() {
                     className={`w-full px-4 py-2 rounded-md border ${
                       errors.email
                         ? "border-red-500"
-                        : "border-gray-300 dark:border-gray-600"
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                        : "border-gray-600"
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white`}
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-500">
@@ -154,7 +153,7 @@ export default function Contact() {
               <div className="mt-6">
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-gray-300 mb-1"
                 >
                   Subject
                 </label>
@@ -164,8 +163,8 @@ export default function Contact() {
                   className={`w-full px-4 py-2 rounded-md border ${
                     errors.subject
                       ? "border-red-500"
-                      : "border-gray-300 dark:border-gray-600"
-                  } focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                      : "border-gray-600"
+                  } focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white`}
                 />
                 {errors.subject && (
                   <p className="mt-1 text-sm text-red-500">
@@ -176,7 +175,7 @@ export default function Contact() {
               <div className="mt-6">
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="block text-sm font-medium text-gray-300 mb-1"
                 >
                   Message
                 </label>
@@ -186,8 +185,8 @@ export default function Contact() {
                   className={`w-full px-4 py-2 rounded-md border ${
                     errors.message
                       ? "border-red-500"
-                      : "border-gray-300 dark:border-gray-600"
-                  } focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                      : "border-gray-600"
+                  } focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white`}
                 ></textarea>
                 {errors.message && (
                   <p className="mt-1 text-sm text-red-500">
@@ -212,7 +211,7 @@ export default function Contact() {
                 </button>
               </div>
               {submitSuccess && (
-                <div className="mt-4 p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-md">
+                <div className="mt-4 p-4  bg-green-900 text-green-300 rounded-md">
                   Message sent successfully!
                 </div>
               )}
@@ -220,14 +219,6 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 -mb-32 -mr-32 opacity-20">
-        <Image
-          src="/placeholder.svg?height=256&width=256"
-          alt="Decorative background"
-          width={256}
-          height={256}
-        />
-      </div>
-    </section>
+  </section>
   );
 }

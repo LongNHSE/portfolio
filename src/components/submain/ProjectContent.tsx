@@ -70,7 +70,7 @@ const Projects = ({ project }: { project: TProjectContent }) => {
         <div className="space-y-10">
           <motion.div
             key={project.title}
-            className="flex relative  overflow-hidden flex-col min-h-[470px] justify-start lg:flex-row gap-8 bg-gray-700  dark:bg-gray-700 rounded-2xl p-6 max-w-7xl"
+            className="flex relative  overflow-hidden flex-col min-h-[470px] justify-start lg:flex-row gap-8 bg-gray-700 rounded-2xl p-6 max-w-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: project.index * 0.1 }}

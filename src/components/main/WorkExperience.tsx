@@ -49,14 +49,14 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.title}
-              className="mb-8 bg-gray-700 dark:bg-gray-700 rounded-lg p-6 shadow-lg"
+              className="mb-8 bg-gray-700 rounded-lg p-6 shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
             >
               <motion.div
-                className="absolute top-0 right-0 w-32 h-32 bg-blue-200 dark:bg-blue-700 rounded-bl-full z-0 opacity-50 
+                className="absolute top-0 right-0 w-32 h-32 bg-blue-700 rounded-bl-full z-0 opacity-50 
                 transition-transform duration-300 group-hover:scale-110"
               ></motion.div>
               <motion.h3
