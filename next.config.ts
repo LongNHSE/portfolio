@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers() {
+    
     return [
+      
       {
         source: "/:path*", // ✅ Fix: Proper wildcard syntax for all routes
         headers: [
