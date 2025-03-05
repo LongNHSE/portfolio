@@ -4,11 +4,12 @@ import Hero from "@/components/main/Hero";
 import Project from "@/components/main/Project";
 import Analytics from "@/components/main/TrackerGoogle";
 import WorkExperience from "@/components/main/WorkExperience";
-
+import { Analytics as Analytics2 } from "@vercel/analytics/react";
 export default function Home() {
   return (
     <div>
       <main className="flex flex-col justify-center min-h-screen py-2">
+        <Analytics2 />
         <Analytics />
         <Hero />
         <div className="section-separator" id="work-experience"></div>
@@ -24,4 +25,3 @@ export default function Home() {
     </div>
   );
 }
-
