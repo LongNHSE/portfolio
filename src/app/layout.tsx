@@ -32,7 +32,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <SpeedInsights />
 
       </head>
       <body
@@ -42,6 +41,8 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+      <SpeedInsights />
+
       </body>
     </html>
   );
