@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/main/Footer";
 import Header from "@/components/main/Header";
+import ReactGA from "react-ga4";
+import Tracker from "@/components/main/TrackerGoogle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +31,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased background-gradient`}
       >
+        <Tracker />
         <Header />
         <main>{children}</main>
         <Footer />
