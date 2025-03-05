@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/main/Footer";
 import Header from "@/components/main/Header";
-import Tracker from "@/components/main/TrackerGoogle";
+// import Tracker from "@/components/main/TrackerGoogle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +34,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased background-gradient`}
       >
-        <Tracker />
+        {/* <Tracker /> */}
         <Header />
         <main>{children}</main>
         <Footer />
